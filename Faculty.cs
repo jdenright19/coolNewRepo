@@ -21,7 +21,7 @@ namespace Login_Window
             FacultyName = user;
             List<String> Coursedatabase = new List<String>();
             var Courselist = new Dictionary<int, dynamic>();
-            string[] lines2 = System.IO.File.ReadAllLines(@"C:\Users\turtl\Desktop\CourseDatabase.txt");
+            string[] lines2 = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\CourseDatabase.txt");
             System.Console.WriteLine("Contents of Course database");
 
             foreach (string line in lines2)
@@ -55,7 +55,13 @@ namespace Login_Window
                     listBox1.Items.Add(Coursedatabase[i]);
                 }
 
+                listBox2.Items.Add(Coursedatabase[i]);
+
             }
+
+
+
+
         }
         public string user { get; set; }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -65,6 +71,14 @@ namespace Login_Window
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+
+
 
         }
     }
