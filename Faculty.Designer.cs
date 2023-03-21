@@ -30,64 +30,89 @@
         {
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.rostersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.advToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
-            this.menuStrip1.SuspendLayout();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Rosters_listBox3 = new System.Windows.Forms.ListBox();
+            this.tabControl1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(27, 101);
+            this.listBox1.Location = new System.Drawing.Point(27, 350);
             this.listBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(408, 444);
+            this.listBox1.Size = new System.Drawing.Size(408, 424);
             this.listBox1.TabIndex = 0;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 69);
+            this.label1.Location = new System.Drawing.Point(27, 326);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(196, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Assigned Courses Next Term";
             // 
-            // menuStrip1
+            // tabControl1
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rostersToolStripMenuItem,
-            this.advToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(1016, 30);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(989, 840);
+            this.tabControl1.TabIndex = 5;
             // 
-            // rostersToolStripMenuItem
+            // tabPage3
             // 
-            this.rostersToolStripMenuItem.Name = "rostersToolStripMenuItem";
-            this.rostersToolStripMenuItem.Size = new System.Drawing.Size(71, 24);
-            this.rostersToolStripMenuItem.Text = "Rosters";
+            this.tabPage3.Controls.Add(this.Rosters_listBox3);
+            this.tabPage3.Controls.Add(this.label3);
+            this.tabPage3.Controls.Add(this.label2);
+            this.tabPage3.Controls.Add(this.listBox2);
+            this.tabPage3.Controls.Add(this.listBox1);
+            this.tabPage3.Controls.Add(this.label1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 29);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(981, 807);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "View Courses";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // advToolStripMenuItem
+            // tabPage1
             // 
-            this.advToolStripMenuItem.Name = "advToolStripMenuItem";
-            this.advToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
-            this.advToolStripMenuItem.Text = "Advisees";
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(981, 807);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Advisees";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(984, 582);
+            this.tabPage2.TabIndex = 3;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(441, 69);
+            this.label2.Location = new System.Drawing.Point(27, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(182, 20);
             this.label2.TabIndex = 3;
@@ -97,31 +122,45 @@
             // 
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 20;
-            this.listBox2.Location = new System.Drawing.Point(441, 101);
+            this.listBox2.Location = new System.Drawing.Point(27, 36);
             this.listBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(535, 444);
+            this.listBox2.Size = new System.Drawing.Size(904, 244);
             this.listBox2.TabIndex = 4;
             this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(521, 326);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(57, 20);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Rosters";
+            // 
+            // Rosters_listBox3
+            // 
+            this.Rosters_listBox3.FormattingEnabled = true;
+            this.Rosters_listBox3.ItemHeight = 20;
+            this.Rosters_listBox3.Location = new System.Drawing.Point(521, 350);
+            this.Rosters_listBox3.Name = "Rosters_listBox3";
+            this.Rosters_listBox3.Size = new System.Drawing.Size(410, 424);
+            this.Rosters_listBox3.TabIndex = 6;
+            this.Rosters_listBox3.SelectedIndexChanged += new System.EventHandler(this.listBox3_SelectedIndexChanged);
             // 
             // Faculty
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1016, 676);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.ClientSize = new System.Drawing.Size(1009, 845);
+            this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Faculty";
             this.Text = "Faculty";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -129,10 +168,13 @@
 
         private ListBox listBox1;
         private Label label1;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem rostersToolStripMenuItem;
-        private ToolStripMenuItem advToolStripMenuItem;
+        private TabControl tabControl1;
+        private TabPage tabPage3;
+        private TabPage tabPage1;
+        private ListBox Rosters_listBox3;
+        private Label label3;
         private Label label2;
         private ListBox listBox2;
+        private TabPage tabPage2;
     }
 }

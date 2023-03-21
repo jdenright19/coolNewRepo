@@ -14,6 +14,10 @@ namespace Login_Window
 {
     public partial class Faculty : System.Windows.Forms.Form
     {
+
+       List<String> assignedCourse = new List<String>(); // a local variable that I can pass between lists
+
+
         public Faculty(string user)
         {
             InitializeComponent();
@@ -53,6 +57,7 @@ namespace Login_Window
                 if (Courselist[i].courses.instructorname == FacultyName)
                 {
                     listBox1.Items.Add(Coursedatabase[i]);
+                    assignedCourse.Add(Coursedatabase[i]);
                 }
 
                 listBox2.Items.Add(Coursedatabase[i]);
@@ -76,6 +81,26 @@ namespace Login_Window
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+
+
+
+
+        }
+
+        private void rostersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            // this needs to pull up a seperate window to pull up the rosters for the classes you are assigned
+
+
+        }
+
+        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            //Need to add the rosters in this box
+            
+
 
 
 
