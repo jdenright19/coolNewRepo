@@ -52,7 +52,7 @@ namespace Login_Window
             //shows form one need to make if else statment that brings up errors and moves onto class list.
             //var Form1 = new Form1();
             //Form1.Show();
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\UserDatabase.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\jdenright19\Desktop\UserDatabase.txt.txt");
 
 
             List<String> Userdatabase = new List<String>();
@@ -90,10 +90,10 @@ namespace Login_Window
                 {
 
                     invalid2 = false;
-                    //Admin adminForm = new Admin();
-                    AddDrop addForm = new AddDrop(username1);
-                    addForm.Show();
-                    //adminForm.Show();
+                    Admin adminForm = new Admin();
+                    //AddDrop addForm = new AddDrop(username1);
+                    //addForm.Show();
+                    adminForm.Show();
 
                 }
                 if (username1 == Userlist[i].usrs.usrname && password2 == Userlist[i].usrs.pswd && Userlist[i].usrs.s == "faculty")
