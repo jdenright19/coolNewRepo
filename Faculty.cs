@@ -89,9 +89,21 @@ namespace Login_Window
                 if (splitLines.Contains(courseNum))
                 {
 
-                    if (splitLines[Array.IndexOf(splitLines, courseNum)+ 1] == "F23")
+                    if (splitLines[Array.IndexOf(splitLines, courseNum) + 1] == "F23")
                     {
                         Rosters_listBox3.Items.Add(splitLines[0]);
+                    }
+                    else
+                    {
+                        string[] splitLines2 = line.Split(courseNum);
+                        if (splitLines2.Contains(courseNum)) 
+                        {
+
+                            if (splitLines[Array.IndexOf(splitLines2, courseNum) + 1] == "F23")
+                            { Rosters_listBox3.Items.Add(splitLines[0]); }
+
+
+                        }
                     }
                 }
                 
