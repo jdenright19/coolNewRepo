@@ -15,7 +15,7 @@ namespace Login_Window
     public partial class Faculty : System.Windows.Forms.Form
     {
 
-       List<String> assignedCourse = new List<String>(); // a local variable that I can pass between lists
+       List<String> assignedCourses = new List<String>(); // a local variable that I can pass between lists
 
 
         public Faculty(string user)
@@ -57,7 +57,7 @@ namespace Login_Window
                 if (Courselist[i].courses.instructorname == FacultyName)
                 {
                     listBox1.Items.Add(Coursedatabase[i]);
-                    assignedCourse.Add(Coursedatabase[i]);
+                    assignedCourses.Add(Coursedatabase[i]);
                 }
 
                 listBox2.Items.Add(Coursedatabase[i]);
@@ -71,7 +71,42 @@ namespace Login_Window
         public string user { get; set; }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Rosters_listBox3.Items.Clear();
+            string curCourse = listBox1.SelectedItem.ToString();
 
+            string courseNum = curCourse.Substring(0, curCourse.IndexOf(' '));
+            Rosters_listBox3.Items.Add(courseNum); //Prints out the class number to the roster before displaying the students
+
+            //code fine up to here
+
+            //string[] OGCourseDataBase = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\OrginalCourseHistoryDatabase.txt");
+            string[] CourseHisDataBase = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\CourseHistoryDatabase.txt");
+            List<string> addedCoursesDataBase = new List<string>();
+
+            foreach (string line in CourseHisDataBase)
+            {
+                string[] splitLines = line.Split(' ');
+                if (splitLines.Contains(courseNum))
+                {
+
+                    if (splitLines[Array.IndexOf(splitLines, courseNum)+ 1] == "F23")
+                    {
+                        Rosters_listBox3.Items.Add(splitLines[0]);
+                    }
+                }
+                
+
+            }
+
+            
+
+
+
+
+
+
+            
+               //Saying i have an out of index issue
         }
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -98,13 +133,45 @@ namespace Login_Window
         private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            //Need to add the rosters in this box
-            
+            ////Need to add the rosters in this box
+            //string[] OGCourseDataBase = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\OrginalCourseDatabase.txt");
+            //string[] CourseDataBase = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\CourseDatabase.txt");
+            //List<string> addedCoursesDataBase;
+
+            //int i = 0; //counter
+            //foreach (string line in CourseDataBase)
+            //{
+            //    string toadd = (line.Split(OGCourseDataBase[i])).ToString();
+            //    addedCoursesDataBase.Add(toadd);
+            //    i++;
+            //}
+
+
+
+            //int j = 0; //coutner
+            //foreach (string line in assignedCourses)
+            //{
+            //    List<int> includedIndex;
+            //    if (addedCoursesDataBase.Contains(line))
+            //    {
+            //      includedIndex.Add(j);
+            //    }
+
+            //    if (includedIndex.Count() != 0)
+            //    {
+            //        Rosters_listBox3.Items.Add(line);
+
+
+
+            //    }
+
+
+            //    j++;
+            }
 
 
 
 
-
-        }
+        
     }
 }
