@@ -28,6 +28,9 @@ namespace Login_Window
             string[] lines2 = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\CourseDatabase.txt");
             System.Console.WriteLine("Contents of Course database");
 
+            List<String> Userdatabase = new List<String>();
+            string[] users = System.IO.File.ReadAllLines(@"C:\SE Repos\UserDatabase.txt");
+
             foreach (string line in lines2)
             {
                 // Use a tab to indent each line of the file.
@@ -52,6 +55,13 @@ namespace Login_Window
                 Courselist[i].courses = new { coursename = courseName, coursetitle = courseTitle, instructorname = instructor, courseCreditNum = courseCredit, nSeats = numSeats, nTime1 = numTimeBlock1, nTime2 = numTimeBlock2 };
 
             }
+            foreach (string line in users)
+            {
+                // Use a tab to indent each line of the file.
+                Userdatabase.Add(line);
+                Console.WriteLine("\n" + line);
+            }
+
             for (int i = 0; i < Courselist.Count; i++)
             {
                 if (Courselist[i].courses.instructorname == FacultyName)
@@ -62,6 +72,17 @@ namespace Login_Window
 
                 listBox2.Items.Add(Coursedatabase[i]);
 
+            }
+
+            for (int i = 0; i < Userdatabase.Count; i++)
+            {
+                string[] Userstring = Userdatabase[i].Split(" ");
+                string advisor = Userstring[5];
+                if (FacultyName == advisor)
+                {
+                    string advisee = Userstring[2] + " " + Userstring[3] + " " + Userstring[4];
+                    adviseeList.Items.Add(advisee);
+                }
             }
 
 
@@ -181,9 +202,14 @@ namespace Login_Window
             //    j++;
             }
 
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
 
+        }
 
+        private void adviseeList_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
-        
+        }
     }
 }
