@@ -34,7 +34,7 @@ namespace Form
         {
             InitializeComponent();
             List<String> Coursedatabase = new List<String>();
-            string[] lines2 = System.IO.File.ReadAllLines(@"C:\Users\jdenright19\Desktop\CourseDatabase.txt.txt");
+            string[] lines2 = System.IO.File.ReadAllLines(@"C:\Users\turtl\Desktop\CourseDatabase.txt");
             this.user = user;
 
             //Katie's Pathway : C:\Users\katie\Downloads\main-master\main-master\CourseDatabase.txt
@@ -191,7 +191,7 @@ namespace Form
                 //course history check
                 List<String> historyData = new List<String>();
                 var history = new Dictionary<String, List<String>>();
-                string[] lines = System.IO.File.ReadAllLines(@"C:\Users\jdenright19\Desktop\CourseHistoryDatabase.txt");
+                string[] lines = System.IO.File.ReadAllLines(@"C:\Users\turtl\Desktop\CourseHistoryDatabase.txt");
                 System.Console.WriteLine("Contents of Course History:");
                 foreach (string line in lines)
                 {
@@ -340,7 +340,7 @@ namespace Form
                         string extraTimeBlock = courseInfo[7];
                         
                     }
-                    string[] lines3 = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\CourseHistoryDatabase.txt");
+                    string[] lines3 = System.IO.File.ReadAllLines(@"C:\Users\turtl\Desktop\CourseHistoryDatabase.txt");
                     List<String> CourseHistory = new List<String>();
                     var Historylist = new Dictionary<int, dynamic>();
                     foreach (string line in lines3)
@@ -419,10 +419,10 @@ namespace Form
                             newString += " ";
                             newString += "N";
                             int line_to_edit = b;
-                            string[] lines5 = File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\CourseHistoryDatabase.txt");
+                            string[] lines5 = File.ReadAllLines(@"C:\Users\turtl\Desktop\CourseHistoryDatabase.txt");
                             string lineToWrite = newString;
                             // Write the new file over the old file.
-                            using (StreamWriter writer = new StreamWriter(@"C:\Users\katie\OneDrive\Desktop\Databases SE\CourseHistoryDatabase.txt"))
+                            using (StreamWriter writer = new StreamWriter(@"C:\Users\turtl\Desktop\CourseHistoryDatabase.txt"))
                             {
                                 for (int currentLine = 0; currentLine <= lines5.Length -1; ++currentLine) //finds the line in the text file to edit and overwrites it.
                                 {

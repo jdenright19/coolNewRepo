@@ -9,15 +9,22 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.CodeDom.Compiler;
+using static System.Windows.Forms.LinkLabel;
 
 namespace Login_Window
 {
     public partial class Faculty : System.Windows.Forms.Form
     {
 
-       List<String> assignedCourses = new List<String>(); // a local variable that I can pass between lists
-
-
+        List<String> assignedCourses = new List<String>(); // a local variable that I can pass between lists
+        string stuName;
+        string userName;
+        string lineToWrite;
+        int line_to_edit;
+        string fName;
+        string lName;
+        string lineToSplit;
         public Faculty(string user)
         {
             InitializeComponent();
@@ -25,11 +32,11 @@ namespace Login_Window
             FacultyName = user;
             List<String> Coursedatabase = new List<String>();
             var Courselist = new Dictionary<int, dynamic>();
-            string[] lines2 = System.IO.File.ReadAllLines(@"C:\SE Repos\CourseDatabase.txt");
+            string[] lines2 = System.IO.File.ReadAllLines(@"C:\Users\turtl\Desktop\CourseDatabase.txt");
             System.Console.WriteLine("Contents of Course database");
 
             List<String> Userdatabase = new List<String>();
-            string[] users = System.IO.File.ReadAllLines(@"C:\SE Repos\UserDatabase.txt");
+            string[] users = System.IO.File.ReadAllLines(@"C:\Users\turtl\Desktop\UserDatabase.txt");
 
             foreach (string line in lines2)
             {
@@ -79,7 +86,7 @@ namespace Login_Window
                 string[] Userstring = Userdatabase[i].Split(" ");
                 string advisor = Userstring[5];
                 if (FacultyName == advisor)
-                {
+                { 
                     string advisee = Userstring[2] + " " + Userstring[3] + " " + Userstring[4];
                     adviseeList.Items.Add(advisee);
                 }
@@ -117,7 +124,7 @@ namespace Login_Window
                     else
                     {
                         string[] splitLines2 = line.Split(courseNum);
-                        if (splitLines2.Contains(courseNum)) 
+                        if (splitLines2.Contains(courseNum))
                         {
 
                             if (splitLines[Array.IndexOf(splitLines2, courseNum) + 1] == "F23")
@@ -127,19 +134,19 @@ namespace Login_Window
                         }
                     }
                 }
-                
+
 
             }
 
-            
 
 
 
 
 
 
-            
-               //Saying i have an out of index issue
+
+
+            //Saying i have an out of index issue
         }
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -200,7 +207,7 @@ namespace Login_Window
 
 
             //    j++;
-            }
+        }
 
         private void tabPage1_Click(object sender, EventArgs e)
         {
@@ -210,12 +217,12 @@ namespace Login_Window
         private void adviseeList_SelectedIndexChanged(object sender, EventArgs e)
         {
             advSched.Items.Clear();
-            string stuName = adviseeList.SelectedItem.ToString();
+            stuName = adviseeList.SelectedItem.ToString();
             string[] names = stuName.Split(' ');
 
             string lastName = names[2];
 
-            string[] CourseHisDataBase = System.IO.File.ReadAllLines(@"C:\SE Repos\CourseHistoryDatabase.txt");
+            string[] CourseHisDataBase = System.IO.File.ReadAllLines(@"C:\Users\turtl\Desktop\CourseHistoryDatabase.txt");
             List<string> addedCoursesDataBase = new List<string>();
 
             foreach (string line in CourseHisDataBase)
@@ -224,11 +231,21 @@ namespace Login_Window
                 if (splitLines[0].Contains(lastName))
                 {
 
-                    for(int i = 0; i < splitLines.Length; i++) {
-                    
-                        if (splitLines[i] == "F23") {
-                            
-                            advSched.Items.Add(splitLines[i -1]);
+                    for (int i = 0; i < splitLines.Length; i++)
+                    {
+
+                        if (splitLines[i] == "F23")
+                        {
+                            string newCourses;
+                            newCourses = splitLines[i - 1];
+                            newCourses += " ";
+                            newCourses += splitLines[i];
+                            newCourses += " ";
+                            newCourses += splitLines[i + 1];
+                            newCourses += " ";
+                            newCourses += splitLines[i + 2];
+                            newCourses += " ";
+                            advSched.Items.Add(newCourses);
                         }
                     }
                     //else
@@ -245,10 +262,9 @@ namespace Login_Window
                     //}
                 }
 
-
             }
         }
-    
+
 
         private void label5_Click(object sender, EventArgs e)
         {
@@ -259,6 +275,176 @@ namespace Login_Window
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string[] lines = File.ReadAllLines(@"C:\Users\turtl\Source\Repos\KNJ-Software-v2.0.2\F2023 Confrimation Database.txt");
+            string[] lines2 = File.ReadAllLines(@"C:\Users\turtl\Desktop\UserDatabase.txt");
+            List<String> Userdatabase = new List<String>();
+            List<String> Confirmationdatabase = new List<String>();
             
+            string[] nameSplit = stuName.Split(" ");
+            fName = nameSplit[0];
+            lName = nameSplit[2];
+            foreach (string line in lines2)
+            {
+                Userdatabase.Add(line);
+            }
+            foreach (string line in lines)
+            {
+                Confirmationdatabase.Add(line);
+            }
+            for (int i = 0; i < Userdatabase.Capacity - 1; i++)
+            {
+                string[] Userstring = Userdatabase[i].Split(' ');
+                string username = Userstring[0];
+                string firstname = Userstring[2];
+                string lastname = Userstring[4];
+
+                if (firstname == fName && lastname == lName)
+                {
+                    userName = username;
+                }
+      
+      
+            }
+            for (int i = 0; i < Confirmationdatabase.Capacity - 1; i++)
+            {
+                string[] Confirmationstring = Confirmationdatabase[i].Split(' ');
+                string user2 = Confirmationstring[0];
+                string confirmVal = Confirmationstring[1];
+                if (user2 == userName)
+                {
+                    line_to_edit = i;
+                    lineToWrite = userName;
+                    lineToWrite += " 1";
+                }
+
+            }
+           using (StreamWriter writer = new StreamWriter(@"C:\Users\turtl\Source\Repos\KNJ-Software-v2.0.2\F2023 Confrimation Database.txt"))
+            {
+                for (int currentLine = 0; currentLine <= lines.Length - 1; ++currentLine) //finds the line in the text file to edit and overwrites it.
+                {
+                    if (currentLine == line_to_edit)
+                    {
+                        writer.WriteLine(lineToWrite);
+                    }
+                    else
+                    {
+                        writer.WriteLine(lines[currentLine]);
+                    }
+                }
+            }
+            ConfirmationPage ConfirmationForm = new ConfirmationPage(fName, lName);
+            ConfirmationForm.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string[] lines = File.ReadAllLines(@"C:\Users\turtl\Source\Repos\KNJ-Software-v2.0.2\F2023 Confrimation Database.txt");
+            string[] lines2 = File.ReadAllLines(@"C:\Users\turtl\Desktop\UserDatabase.txt");
+            string[] lines3 = File.ReadAllLines(@"C:\Users\turtl\Desktop\OriginalCourseHistoryDatabase.txt");
+            string[] lines4 = File.ReadAllLines(@"C:\Users\turtl\Desktop\CourseHistoryDatabase.txt");
+            List<String> Userdatabase = new List<String>();
+            List<String> Confirmationdatabase = new List<String>();
+            List<String> OriginalCourseHistorydatabase = new List<String>();
+            List<String> CourseHistorydatabase = new List<String>();
+            string[] nameSplit = stuName.Split(" ");
+            fName = nameSplit[0];
+            lName = nameSplit[2];
+            foreach (string line in lines3)
+            {
+                OriginalCourseHistorydatabase.Add(line);
+            }
+            foreach (string line in lines4)
+            {
+                CourseHistorydatabase.Add(line);
+            }
+            foreach (string line in lines2)
+            {
+                Userdatabase.Add(line);
+            }
+            foreach (string line in lines)
+            {
+                Confirmationdatabase.Add(line);
+            }
+            for (int i = 0; i < Userdatabase.Capacity - 1; i++)
+            {
+                string[] Userstring = Userdatabase[i].Split(' ');
+                string username = Userstring[0];
+                string firstname = Userstring[2];
+                string lastname = Userstring[4];
+
+                if (firstname == fName && lastname == lName)
+                {
+                    userName = username;
+                }
+
+
+            }
+            for (int i = 0; i < Confirmationdatabase.Capacity - 1; i++)
+            {
+                string[] Confirmationstring = Confirmationdatabase[i].Split(' ');
+                string user2 = Confirmationstring[0];
+                
+                if (user2 == userName)
+                {
+                    line_to_edit = i;
+                    lineToWrite = userName;
+                    lineToWrite += " 0";
+                }
+
+            }
+            using (StreamWriter writer = new StreamWriter(@"C:\Users\turtl\Source\Repos\KNJ-Software-v2.0.2\F2023 Confrimation Database.txt"))
+            {
+                for (int currentLine = 0; currentLine <= lines.Length - 1; ++currentLine) //finds the line in the text file to edit and overwrites it.
+                {
+                    if (currentLine == line_to_edit)
+                    {
+                        writer.WriteLine(lineToWrite);
+                    }
+                    else
+                    {
+                        writer.WriteLine(lines[currentLine]);
+                    }
+                }
+            }
+            
+            for (int i = 0; i < OriginalCourseHistorydatabase.Capacity - 1; i++)
+            {
+                string[] OriginalCourseHistorystring = OriginalCourseHistorydatabase[i].Split(' ');
+                string user2 = OriginalCourseHistorystring[0];
+              
+                if (user2 == userName)
+                {
+                    line_to_edit = i;
+                    
+                    lineToWrite = OriginalCourseHistorydatabase[i];
+                }
+            }
+
+
+            using (StreamWriter writer2 = new StreamWriter(@"C:\Users\turtl\Desktop\CourseHistoryDatabase.txt"))
+            {
+                for (int currentLine = 0; currentLine <= lines4.Length - 1; ++currentLine) //finds the line in the text file to edit and overwrites it.
+                {
+                    if (currentLine == line_to_edit)
+                    {
+                        writer2.WriteLine(lineToWrite);
+                    }
+                    else
+                    {
+                        writer2.WriteLine(lines4[currentLine]);
+                    }
+                }
+            }
+            denyForm denyForm = new denyForm(fName, lName);
+            denyForm.Show();
+        }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
