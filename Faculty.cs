@@ -25,7 +25,7 @@ namespace Login_Window
             FacultyName = user;
             List<String> Coursedatabase = new List<String>();
             var Courselist = new Dictionary<int, dynamic>();
-            string[] lines2 = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\CourseDatabase.txt");
+            string[] lines2 = System.IO.File.ReadAllLines(@"C:\SE Repos\CourseDatabase.txt");
             System.Console.WriteLine("Contents of Course database");
 
             List<String> Userdatabase = new List<String>();
@@ -101,7 +101,7 @@ namespace Login_Window
             //code fine up to here
 
             //string[] OGCourseDataBase = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\OrginalCourseHistoryDatabase.txt");
-            string[] CourseHisDataBase = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\CourseHistoryDatabase.txt");
+            string[] CourseHisDataBase = System.IO.File.ReadAllLines(@"C:\SE Repos\CourseHistoryDatabase.txt");
             List<string> addedCoursesDataBase = new List<string>();
 
             foreach (string line in CourseHisDataBase)
@@ -209,7 +209,56 @@ namespace Login_Window
 
         private void adviseeList_SelectedIndexChanged(object sender, EventArgs e)
         {
+            advSched.Items.Clear();
+            string stuName = adviseeList.SelectedItem.ToString();
+            string[] names = stuName.Split(' ');
+
+            string lastName = names[2];
+
+            string[] CourseHisDataBase = System.IO.File.ReadAllLines(@"C:\SE Repos\CourseHistoryDatabase.txt");
+            List<string> addedCoursesDataBase = new List<string>();
+
+            foreach (string line in CourseHisDataBase)
+            {
+                string[] splitLines = line.Split(' ');
+                if (splitLines[0].Contains(lastName))
+                {
+
+                    for(int i = 0; i < splitLines.Length; i++) {
+                    
+                        if (splitLines[i] == "F23") {
+                            
+                            advSched.Items.Add(splitLines[i -1]);
+                        }
+                    }
+                    //else
+                    //{
+                    //    string[] splitLines2 = line.Split(lastName);
+                    //    if (splitLines2.Contains(lastName))
+                    //    {
+
+                    //        if (splitLines[Array.IndexOf(splitLines2, lastName) + 1] == "F23")
+                    //        { advSched.Items.Add(splitLines[0]); }
+
+
+                    //    }
+                    //}
+                }
+
+
+            }
+        }
+    
+
+        private void label5_Click(object sender, EventArgs e)
+        {
 
         }
+
+        private void advSched_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+            
     }
 }
