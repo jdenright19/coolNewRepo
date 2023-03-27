@@ -108,7 +108,7 @@ namespace Login_Window
             //code fine up to here
 
             //string[] OGCourseDataBase = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\OrginalCourseHistoryDatabase.txt");
-            string[] CourseHisDataBase = System.IO.File.ReadAllLines(@"C:\SE Repos\CourseHistoryDatabase.txt");
+            string[] CourseHisDataBase = System.IO.File.ReadAllLines(@"C:\Users\turtl\Desktop\CourseHistoryDatabase.txt");
             List<string> addedCoursesDataBase = new List<string>();
 
             foreach (string line in CourseHisDataBase)
@@ -278,7 +278,7 @@ namespace Login_Window
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string[] lines = File.ReadAllLines(@"C:\Users\turtl\Source\Repos\KNJ-Software-v2.0.2\F2023 Confrimation Database.txt");
+            string[] lines = File.ReadAllLines(@"C:\Users\turtl\Source\Repos\coolNewRepo\F2023 Confrimation Database.txt");
             string[] lines2 = File.ReadAllLines(@"C:\Users\turtl\Desktop\UserDatabase.txt");
             List<String> Userdatabase = new List<String>();
             List<String> Confirmationdatabase = new List<String>();
@@ -301,7 +301,7 @@ namespace Login_Window
                 string firstname = Userstring[2];
                 string lastname = Userstring[4];
 
-                if (firstname == fName && lastname == lName)
+                if (firstname == fName && lName == lastname)
                 {
                     userName = username;
                 }
@@ -312,7 +312,7 @@ namespace Login_Window
             {
                 string[] Confirmationstring = Confirmationdatabase[i].Split(' ');
                 string user2 = Confirmationstring[0];
-                string confirmVal = Confirmationstring[1];
+                
                 if (user2 == userName)
                 {
                     line_to_edit = i;
@@ -321,7 +321,7 @@ namespace Login_Window
                 }
 
             }
-           using (StreamWriter writer = new StreamWriter(@"C:\Users\turtl\Source\Repos\KNJ-Software-v2.0.2\F2023 Confrimation Database.txt"))
+           using (StreamWriter writer = new StreamWriter(@"C:\Users\turtl\Source\Repos\coolNewRepo\F2023 Confrimation Database.txt"))
             {
                 for (int currentLine = 0; currentLine <= lines.Length - 1; ++currentLine) //finds the line in the text file to edit and overwrites it.
                 {
@@ -341,7 +341,7 @@ namespace Login_Window
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string[] lines = File.ReadAllLines(@"C:\Users\turtl\Source\Repos\KNJ-Software-v2.0.2\F2023 Confrimation Database.txt");
+            string[] lines = File.ReadAllLines(@"C:\Users\turtl\Source\Repos\coolNewRepo\F2023 Confrimation Database.txt");
             string[] lines2 = File.ReadAllLines(@"C:\Users\turtl\Desktop\UserDatabase.txt");
             string[] lines3 = File.ReadAllLines(@"C:\Users\turtl\Desktop\OriginalCourseHistoryDatabase.txt");
             string[] lines4 = File.ReadAllLines(@"C:\Users\turtl\Desktop\CourseHistoryDatabase.txt");
@@ -375,7 +375,7 @@ namespace Login_Window
                 string firstname = Userstring[2];
                 string lastname = Userstring[4];
 
-                if (firstname == fName && lastname == lName)
+                if (firstname == fName)
                 {
                     userName = username;
                 }
@@ -395,7 +395,7 @@ namespace Login_Window
                 }
 
             }
-            using (StreamWriter writer = new StreamWriter(@"C:\Users\turtl\Source\Repos\KNJ-Software-v2.0.2\F2023 Confrimation Database.txt"))
+            using (StreamWriter writer = new StreamWriter(@"C:\Users\turtl\Source\Repos\coolNewRepo\F2023 Confrimation Database.txt"))
             {
                 for (int currentLine = 0; currentLine <= lines.Length - 1; ++currentLine) //finds the line in the text file to edit and overwrites it.
                 {

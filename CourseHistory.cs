@@ -23,7 +23,7 @@ namespace Login_Window
             string[] Grade = new string[10];
             List<String> historyData = new List<String>();
             var history = new Dictionary<String, List<String>>();
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\CourseHistoryDatabase.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\turtl\Desktop\CourseHistoryDatabase.txt");
             System.Console.WriteLine("Contents of Course History:");
             foreach (string line in lines)
             {
@@ -38,11 +38,12 @@ namespace Login_Window
                 history.Add(username, new List<String>());
                 int numCourses = int.Parse(classInfo[1]);
                 // iterate through numClasses, add courses to list, add to dictionary
-                int increment = 2;
+                int increment = 1;
                 if (user == classInfo[0])
                 {
                     for (int i = 0; i < int.Parse(numClasses); i++)
                     {
+                        increment++;
                         className[i] = classInfo[increment];
                         increment++;
                         semester[i] = classInfo[increment];
@@ -50,7 +51,7 @@ namespace Login_Window
                         creditNum[i] = classInfo[increment];
                         increment++;
                         Grade[i] = classInfo[increment];
-                        increment++;
+                     
                     }
                     for (int b = 0; b < int.Parse(numClasses); b++)
                     {

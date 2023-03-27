@@ -7,10 +7,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,9 +28,10 @@ namespace Form
         List<String> currentSchedNames = new List<String>(); //this is a internal list of what classes the student is enrolled into
         List<String> currentSchedTimes = new List<String>(); // and the time those classes occur
         float creditTot = 0; // This allows us to know the credit total in this form.
-        
+        int newCourseCntr;
 
-
+        int line_to_edit;
+        string oldLine;
 
         public AddDrop(string user)
         {
@@ -87,6 +90,23 @@ namespace Form
 
         private void Drop_btn_Click(object sender, EventArgs e)
         {
+            List<String> CourseHistorydatabase = new List<String>();
+            string[] lines2 = System.IO.File.ReadAllLines(@"C:\Users\turtl\Desktop\CourseHistoryDatabase.txt");
+            foreach (string line in lines2)
+            {
+                CourseHistorydatabase.Add(line);
+
+            }
+            for (int p = 0; p < CourseHistorydatabase.Count; p++)
+            {
+                string[] splitCourseHistory = CourseHistorydatabase[p].Split(" ");
+                string currentUser = splitCourseHistory[0];
+                if (currentUser == user)
+                {
+                    line_to_edit = p;
+                    oldLine = CourseHistorydatabase[p];
+                }
+            }
             
             for (int i =dataGridView1.Rows.Count - 1; i >= 0; i--) //loops through our dataTable and finds any rows with a checked index, if the index is checked that whole row gets removed.
             {
@@ -102,14 +122,19 @@ namespace Form
                     replacementLine += (string)dataGridView1.Rows[i].Cells[3].Value;
                     replacementLine += " ";
                     replacementLine += "N";
-                    int line_to_edit = i;
+                   
 
-                    string[] lines5 = File.ReadAllLines(@"C:\Users\jdenright19\Desktop\CourseHistoryDatabase.txt");
+                    string[] lines5 = File.ReadAllLines(@"C:\Users\turtl\Desktop\CourseHistoryDatabase.txt");
+
                     
-                    string oldLine = lines5[i];
                     string[] splitText = oldLine.Split(replacementLine);
                     string newText = splitText[0];
-                    newText += splitText[1];
+                    
+                    if (newCourseCntr > 1)
+                    {
+                        newText += splitText[1];
+                    }
+                    
                     string[] newText2 = newText.Split(" ");
                     int numClasses = int.Parse(newText2[1]);
                     numClasses -= 1;
@@ -124,7 +149,7 @@ namespace Form
                     }
                     string lineToWrite = newText3;
                     // Write the new file over the old file.
-                    using (StreamWriter writer = new StreamWriter(@"C:\Users\jdenright19\Desktop\CourseHistoryDatabase.txt"))
+                    using (StreamWriter writer = new StreamWriter(@"C:\Users\turtl\Desktop\CourseHistoryDatabase.txt"))
                     {
                         for (int currentLine = 0; currentLine <= lines5.Length - 1; ++currentLine) //finds the line in the text file to edit and overwrites it.
                         {
@@ -139,7 +164,7 @@ namespace Form
                         }
                     }
                     dataGridView1.Rows.RemoveAt(i);
-                    
+                    newCourseCntr -= 1;
                 }
             }
             
@@ -159,7 +184,7 @@ namespace Form
 
         private void lbl_submit_Click(object sender, EventArgs e)
         {
-
+            newCourseCntr += 1;
             List<string> courses = new List<string>(); // this is used to keep track of what courses have been selected in the select menu
             bool nameCheck = false; // this name check that we will use later to make sure we aren't adding any of the same courses twice
             bool timeCheck = false; // this is a time check that we will use later to make sure we aren't adding any courses to the schedule that have time conflicts
@@ -295,8 +320,8 @@ namespace Form
                             {
 
                                 timeCheck = false; // fails the check
-                                OverloadForm overloaderror = new OverloadForm();
-                                overloaderror.ShowDialog(); //shows the error dialog THAT NEEDS TO BE ADDED 
+                                warningForm warningError = new warningForm();
+                                warningError.ShowDialog(); //shows the error dialog THAT NEEDS TO BE ADDED 
                                 break; // Breaks out of this loop no need to keep checking
 
 
