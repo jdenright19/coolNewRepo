@@ -32,11 +32,11 @@ namespace Login_Window
             FacultyName = user;
             List<String> Coursedatabase = new List<String>();
             var Courselist = new Dictionary<int, dynamic>();
-            string[] lines2 = System.IO.File.ReadAllLines(@"C:\Users\turtl\Desktop\CourseDatabase.txt");
+            string[] lines2 = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\CourseDatabase.txt");
             System.Console.WriteLine("Contents of Course database");
 
             List<String> Userdatabase = new List<String>();
-            string[] users = System.IO.File.ReadAllLines(@"C:\Users\turtl\Desktop\UserDatabase.txt");
+            string[] users = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\UserDatabase.txt");
 
             foreach (string line in lines2)
             {
@@ -105,10 +105,9 @@ namespace Login_Window
             string courseNum = curCourse.Substring(0, curCourse.IndexOf(' '));
             Rosters_listBox3.Items.Add(courseNum); //Prints out the class number to the roster before displaying the students
 
-            //code fine up to here
 
             //string[] OGCourseDataBase = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\OrginalCourseHistoryDatabase.txt");
-            string[] CourseHisDataBase = System.IO.File.ReadAllLines(@"C:\Users\turtl\Desktop\CourseHistoryDatabase.txt");
+            string[] CourseHisDataBase = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\CourseHistoryDatabase.txt");
             List<string> addedCoursesDataBase = new List<string>();
 
             foreach (string line in CourseHisDataBase)
@@ -146,7 +145,6 @@ namespace Login_Window
 
 
 
-            //Saying i have an out of index issue
         }
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -222,7 +220,7 @@ namespace Login_Window
 
             string lastName = names[2];
 
-            string[] CourseHisDataBase = System.IO.File.ReadAllLines(@"C:\Users\turtl\Desktop\CourseHistoryDatabase.txt");
+            string[] CourseHisDataBase = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\CourseHistoryDatabase.txt");
             List<string> addedCoursesDataBase = new List<string>();
 
             foreach (string line in CourseHisDataBase)

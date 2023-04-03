@@ -23,7 +23,7 @@ namespace Login_Window
             string[] Grade = new string[10];
             List<String> historyData = new List<String>();
             var history = new Dictionary<String, List<String>>();
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\turtl\Desktop\CourseHistoryDatabase.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\CourseHistoryDatabase.txt");
             System.Console.WriteLine("Contents of Course History:");
             foreach (string line in lines)
             {

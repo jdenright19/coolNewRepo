@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,7 +18,7 @@ namespace Login_Window
             InitializeComponent();
             List<String> Coursedatabase = new List<String>();
             var Courselist = new Dictionary<int, dynamic>();
-            string[] lines2 = System.IO.File.ReadAllLines(@"C:\Users\jdenright19\Desktop\CourseDatabase.txt.txt");
+            string[] lines2 = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\CourseDatabase.txt");
             System.Console.WriteLine("Contents of Course database");
 
             foreach (string line in lines2)
@@ -33,7 +34,7 @@ namespace Login_Window
             }
          
 
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\jdenright19\Desktop\UserDatabase.txt.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\UserDatabase.txt");
             List<String> Userdatabase = new List<String>();
             var Userlist = new Dictionary<int, dynamic>();
 
@@ -62,10 +63,21 @@ namespace Login_Window
 
                 //Console.WriteLine("Key {0}, Username: {1}, Password: {2}, First name: {3}, Middle name: {4}, Last name: {5}, Status {6}\n", Userlist[i].usrs, Userlist[i].usrs.usrname, Userlist[i].usrs.pswd, Userlist[i].usrs.fname, Userlist[i].usrs.mname, Userlist[i].usrs.lname, Userlist[i].usrs.s);
             }
+
+
             for (int i = 0; i < Userdatabase.Count; i++)
             {
                 listBox1.Items.Add(Userlist[i].usrs.usrname + " " + Userlist[i].usrs.s);
             }
+
+         
+
+
+
+
+
+
+
 
         }
 
@@ -80,6 +92,66 @@ namespace Login_Window
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            // *************** SHOULD ADD THE PROFS NAME TO THE ROSTER TOO *********************
+            
+            listBox6.Items.Clear();
+            string curCourse = listBox2.SelectedItem.ToString();
+
+            string courseNum = curCourse.Substring(0, curCourse.IndexOf(' '));
+            //string courseName = curCourse.Substring(curCourse.IndexOf(courseNum), curCourse.IndexOf(' '));
+            //string profName = "Instructor: " + curCourse.Substring(curCourse.IndexOf(courseName), curCourse.IndexOf(' '));
+            listBox6.Items.Add(courseNum); //Prints out the class number to the roster before displaying the students
+            //listBox6.Items.Add(profName);
+
+            //string[] OGCourseDataBase = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\OrginalCourseHistoryDatabase.txt");
+            string[] CourseHisDataBase = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\CourseHistoryDatabase.txt");
+            List<string> addedCoursesDataBase = new List<string>();
+
+            foreach (string line in CourseHisDataBase)
+            {
+                string[] splitLines = line.Split(' ');
+                if (splitLines.Contains(courseNum))
+                {
+
+                    if (splitLines[Array.IndexOf(splitLines, courseNum) + 1] == "F23")
+                    {
+                        listBox6.Items.Add(splitLines[0]);
+                    }
+                    else
+                    {
+                        string[] splitLines2 = line.Split(courseNum);
+                        if (splitLines2.Contains(courseNum))
+                        {
+
+                            if (splitLines[Array.IndexOf(splitLines2, courseNum) + 1] == "F23")
+                            { listBox6.Items.Add(splitLines[0]); }
+
+
+                        }
+                    }
+                }
+
+
+            }
+        }
+
+        private void listBox6_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+
+
+
+
+        }
+
+        private void listBox7_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

@@ -52,7 +52,7 @@ namespace Login_Window
             //shows form one need to make if else statment that brings up errors and moves onto class list.
             //var Form1 = new Form1();
             //Form1.Show();
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\turtl\Desktop\UserDatabase.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\UserDatabase.txt");
 
 
             List<String> Userdatabase = new List<String>();
