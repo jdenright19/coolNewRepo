@@ -67,7 +67,12 @@ namespace Login_Window
 
             for (int i = 0; i < Userdatabase.Count; i++)
             {
-                listBox1.Items.Add(Userlist[i].usrs.usrname + " " + Userlist[i].usrs.s);
+                if ((Userlist[i].usrs.s == "admin"))
+                { listBox1.Items.Add(Userlist[i].usrs.usrname + " " + Userlist[i].usrs.s); }
+                else if(Userlist[i].usrs.s == "faculty")
+                            { listBox3.Items.Add(Userlist[i].usrs.usrname + " " + Userlist[i].usrs.s); }
+                else { listBox4.Items.Add(Userlist[i].usrs.usrname + " " + Userlist[i].usrs.s); }
+               
             }
 
          
