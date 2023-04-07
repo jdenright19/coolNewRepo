@@ -1,5 +1,6 @@
 using Form;
 using Login_GUI;
+using Microsoft.VisualBasic.ApplicationServices;
 using static System.Windows.Forms.LinkLabel;
 
 namespace Login_Window
@@ -52,20 +53,23 @@ namespace Login_Window
             //shows form one need to make if else statment that brings up errors and moves onto class list.
             //var Form1 = new Form1();
             //Form1.Show();
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\UserDatabase.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\katie\Downloads\UserDatabase.txt");
 
 
-            List<String> Userdatabase = new List<String>();
+            List <String> Userdatabase = new List<String>();
             var Userlist = new Dictionary<int, dynamic>();
             foreach (string line in lines)
             {
                 // Use a tab to indent each line of the file.
+                //line.Trim('\n');
                 Userdatabase.Add(line);
+
                 Console.WriteLine("\n" + line);
 
             }
-            for (int i = 0; i < Userdatabase.Capacity - 1; i++)
-            {
+            
+            for (int i = 0; i < Userdatabase.Count  ; i++)
+            {   
                 string[] Userstring = Userdatabase[i].Split(' ');
                 string username = Userstring[0];
                 string password = Userstring[1];

@@ -34,6 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button6 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.listBox5 = new System.Windows.Forms.ListBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -110,6 +111,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button6);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.listBox5);
             this.tabPage1.Controls.Add(this.button2);
@@ -128,6 +130,16 @@
             this.tabPage1.Text = "User Overview";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(17, 819);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(102, 38);
+            this.button6.TabIndex = 10;
+            this.button6.Text = "Refresh";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -145,6 +157,7 @@
             this.listBox5.Name = "listBox5";
             this.listBox5.Size = new System.Drawing.Size(341, 344);
             this.listBox5.TabIndex = 8;
+            this.listBox5.SelectedIndexChanged += new System.EventHandler(this.listBox5_SelectedIndexChanged);
             // 
             // button2
             // 
@@ -199,6 +212,7 @@
             this.listBox3.Name = "listBox3";
             this.listBox3.Size = new System.Drawing.Size(341, 384);
             this.listBox3.TabIndex = 2;
+            this.listBox3.SelectedIndexChanged += new System.EventHandler(this.listBox3_SelectedIndexChanged);
             // 
             // tabPage2
             // 
@@ -325,5 +339,6 @@
         private TabPage tabPage4;
         private Button button5;
         private Button button4;
+        private Button button6;
     }
 }

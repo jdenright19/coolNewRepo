@@ -198,17 +198,12 @@ namespace Form
 
             }
 
-             // this is setting the template for the new rows I am going to make later
-
-
+             // this is setting the template for the new rows I am going to make later  
 
             for (int i = 0; i < courses.Capacity - 3; i++) // we are now going to look through the course list
-
             {
                 //Splitting everything up in the course descriptions
                 string[] courseInfo = courses[i].Split(' ');
-
-
                 string courseNumber = courseInfo[0]; // course number
                 string courseName = courseInfo[1]; // course name
                 //we need to add these to the global variables if they aren't already on there

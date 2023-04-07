@@ -34,7 +34,7 @@ namespace Login_Window
             }
          
 
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\katie\OneDrive\Desktop\Databases SE\UserDatabase.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\katie\Downloads\UserDatabase.txt");
             List<String> Userdatabase = new List<String>();
             var Userlist = new Dictionary<int, dynamic>();
 
@@ -45,7 +45,7 @@ namespace Login_Window
                 Console.WriteLine("\n" + line);
 
             }
-            for (int i = 0; i < Userdatabase.Capacity - 1; i++)
+            for (int i = 0; i < Userdatabase.Count(); i++)
             {
                 string[] Userstring = Userdatabase[i].Split(' ');
                 string username = Userstring[0];
@@ -63,9 +63,9 @@ namespace Login_Window
 
                 //Console.WriteLine("Key {0}, Username: {1}, Password: {2}, First name: {3}, Middle name: {4}, Last name: {5}, Status {6}\n", Userlist[i].usrs, Userlist[i].usrs.usrname, Userlist[i].usrs.pswd, Userlist[i].usrs.fname, Userlist[i].usrs.mname, Userlist[i].usrs.lname, Userlist[i].usrs.s);
             }
-
-
-            for (int i = 0; i < Userdatabase.Count; i++)
+            
+            // This is loading in the users into the correct places
+            for (int i = 0; i < Userdatabase.Count()-1; i++)
             {
                 if ((Userlist[i].usrs.s == "admin"))
                 { listBox1.Items.Add(Userlist[i].usrs.usrname + " " + Userlist[i].usrs.s); }
@@ -73,16 +73,7 @@ namespace Login_Window
                             { listBox3.Items.Add(Userlist[i].usrs.usrname + " " + Userlist[i].usrs.s); }
                 else { listBox4.Items.Add(Userlist[i].usrs.usrname + " " + Userlist[i].usrs.s); }
                
-            }
-
-         
-
-
-
-
-
-
-
+            } 
 
         }
 
@@ -158,6 +149,24 @@ namespace Login_Window
 
         private void listBox7_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            //Refresh Button that can be used after deleting a user
+        }
+
+        private void listBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Steal Advisee code from faculty menu
+
+
+        }
+
+        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+// Ask Naomi to do this bit
 
         }
     }

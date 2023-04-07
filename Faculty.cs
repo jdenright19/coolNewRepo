@@ -81,6 +81,8 @@ namespace Login_Window
 
             }
 
+            //Code for adding Advisees 
+
             for (int i = 0; i < Userdatabase.Count; i++)
             {
                 string[] Userstring = Userdatabase[i].Split(" ");
@@ -215,7 +217,7 @@ namespace Login_Window
         private void adviseeList_SelectedIndexChanged(object sender, EventArgs e)
         {
             advSched.Items.Clear();
-            stuName = adviseeList.SelectedItem.ToString();
+            stuName = adviseeList.SelectedItem.ToString(); 
             string[] names = stuName.Split(' ');
 
             string lastName = names[2];
